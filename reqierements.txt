@@ -1,0 +1,17 @@
+SpeechRecognition
+pydub
+pyaudio
+PocketSphinx
+Vosk
+setuptools
+openai-whisper
+git+https://github.com/mmabrouk/chatgpt-wrapper
+torch
+setuptools-rust
+tensorrt
+numpy
+gtts
+playsound
+pyautogui
+termcolor
+click
