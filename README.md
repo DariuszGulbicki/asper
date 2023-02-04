@@ -101,7 +101,7 @@ class ExampleUserCommand(CustomCommand):
         return False
 ```
 
-> **Note:**
+> **Note:** \
 > User commands should only be used for system related tasks (e.g. exit, nothing, read).
 > If you want to complete more complex tasks, you should code them into your message procesor or use an assistant command.
 
@@ -207,14 +207,14 @@ asper persona hotwords --add "hey test assistant" --add "hey test assistant."
 asper run
 ```
 
-> **Note:**
-> ChatGPT will not work by default since it relies on a library that is not included in the package.
-> This library uses webscraping to connect with chatgpt which may be against the website's terms of service.
-> ** Use at your own risk **
-> To install the library, run the following command:
-> `pip install git+https://github.com/mmabrouk/chatgpt-wrapper`
-> Then run the following command to log in to chatgpt:
-> `chatgpt install`
+> **Note:** \
+> ChatGPT will not work by default since it relies on a library that is not included in the package. \
+> This library uses webscraping to connect with chatgpt which may be against the website's terms of service. \
+> **Use at your own risk** \
+> To install the library, run the following command: \
+> `pip install git+https://github.com/mmabrouk/chatgpt-wrapper` \
+> Then run the following command to log in to chatgpt: \
+> `chatgpt install` \
 
 ### Contributing
 
