@@ -2,6 +2,7 @@ import click
 from termcolor import colored
 from config import config_manager as configs
 from logging_system import logger as logs
+from utils.initializer import init_asper
 
 _render_emojis = True
 _render_colors = True
@@ -26,7 +27,7 @@ def _render_colored(list):
 @click.group("logger")
 def logger():
     """Lets you manage loggers for ASPER system."""
-    pass
+    init_asper()
 
 @click.command("list")
 def list():

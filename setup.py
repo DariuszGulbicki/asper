@@ -1,9 +1,15 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
+long_description = open('README.md').read()
 
 setup(
     name='asper',
-    version='0.0.1',
-    packages=[''],
+    version='0.0.2',
+    author="Dariusz Gulbicki",
+    description="Assistant Personalities. A system to quickly create voice assistants for different tasks.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    packages=find_packages(),
     install_requires=[
         'SpeechRecognition',
         'pyaudio',

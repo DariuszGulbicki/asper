@@ -8,6 +8,7 @@ from config import config_manager as configs
 from personality import personality_manager as personas
 from utils import printer
 from commands import custom_command_loader as commands
+from utils.initializer import init_asper
 
 
 _render_emojis = True
@@ -42,6 +43,7 @@ def _hotword_detected(text):
 
 @click.command("run")
 def run():
+    init_asper()
     commands.load_commands()
     """Runs an ASPER persona."""
     printer.print_welcome_screen(configs.config.version)

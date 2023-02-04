@@ -2,6 +2,7 @@ import os
 from playsound import playsound
 
 from logging_system import logger
+from utils.path_utils import get_installed_path
 
 # 'effects/' + music_pack + '/' + name + '.wav'
 
@@ -15,7 +16,7 @@ def play_effect(name):
     logger.debug("Playing effect: " + name, "Audio effects")
     try:
         if play:
-            playsound('effects/' + music_pack + '/' + name + '.wav')
+            playsound(get_installed_path('effects/' + music_pack + '/' + name + '.wav'))
     except Exception as e:
         logger.error("There was an error when playing file" + name + '.wav', "Audio effects", e)
 

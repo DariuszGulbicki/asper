@@ -1,6 +1,5 @@
 import speech_recognition as sr
 import os
-import Errors.RecognitionError as RecognitionError
 from enum import Enum
 import time
 from pydub import AudioSegment

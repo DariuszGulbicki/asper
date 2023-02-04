@@ -9,7 +9,7 @@ from config import config_manager as configs
 from utils import audio_effects as audio
 from utils import text_to_speech as tts
 from commands import custom_command_loader as commands
-from cli import cli_run as crun
+from utils.path_utils import get_default_app_folder
 
 from utils import printer
 
@@ -17,13 +17,6 @@ from utils import printer
 personas = []
 selected_personality = "default.asper"
 persona = Personality()
-
-def _get_default_app_folder():
-    sysname = platform.system()
-    if sysname == "Windows":
-        return os.path.join(os.getenv("APPDATA"), "asper")
-    elif sysname == "Linux":
-        return os.path.join(os.getenv("HOME"), ".asper")
 
 def _execute_load_hooks():
     logger.debug("Executing load hooks", "Personality manager")
@@ -53,7 +46,7 @@ def _execute_load_hooks():
 def load():
     global persona
     logger.debug("Loading selected personality", "Personality manager")
-    def_app_folder = _get_default_app_folder()
+    def_app_folder = get_default_app_folder()
     try:
         with open(os.path.join(def_app_folder, "personas", selected_personality), "r") as f:
             persona = yaml.load(f.read(), Loader=yaml.Loader)
@@ -65,7 +58,7 @@ def load():
 
 def save():
     logger.debug("Saving selected personality", "Personality manager")
-    def_app_folder = _get_default_app_folder()
+    def_app_folder = get_default_app_folder()
     os.makedirs(os.path.join(def_app_folder, "personas"), exist_ok=True)
     try:
         with open(os.path.join(def_app_folder, "personas", selected_personality), "x") as f:
@@ -78,7 +71,7 @@ def save():
 def _search_personas_dir():
     logger.debug("Searching for personas", "Personality manager")
     global personas
-    def_app_folder = _get_default_app_folder()
+    def_app_folder = get_default_app_folder()
     temp_personas = []
     temp = None
     for file in os.listdir(os.path.join(def_app_folder, "personas")):
@@ -104,7 +97,7 @@ def destroy_personality(per_file):
     if per_file is None:
         per_file = selected_personality
     logger.debug("Destroying personality " + per_file, "Personality manager")
-    def_app_folder = _get_default_app_folder()
+    def_app_folder = get_default_app_folder()
     os.remove(os.path.join(def_app_folder, "personas", per_file))
     selected_personality = "default.asper"
     load()

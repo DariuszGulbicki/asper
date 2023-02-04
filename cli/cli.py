@@ -2,7 +2,8 @@ import click
 from cli.cli_personas import persona as persona
 from cli.cli_run import run
 from cli.cli_logger import logger
-from utils import text_to_speech as tts
+from utils.path_utils import get_default_app_folder
+from utils.initializer import init_asper
 
 @click.group("cli")
 def cli():

@@ -7,6 +7,7 @@ from personality import personality_manager as personas
 from message_processing import message_processor_manager as proc
 from utils import audio_effects as audio
 from utils import text_to_speech as txtts
+from utils.initializer import init_asper
 
 _render_emojis = True
 _render_colors = True
@@ -31,7 +32,7 @@ def _render_colored(list):
 @click.group("persona")
 def persona():
     """Lets you manage your personas."""
-    pass
+    init_asper()
 
 @click.command("list")
 def list_personas():
@@ -103,8 +104,12 @@ def change_persona_author(new_author):
 @click.command("hotwords")
 @click.option("--add", "-a", multiple=True, help="Adds a hotword to your persona.", type=str)
 @click.option("--remove", "-r", multiple=True, help="Removes a hotword from your persona.", type=str)
-def list_hotwords(add, remove):
+@click.option("--clear", "-c", multiple=False, help="Clears all hotwords from your persona.", is_flag=True, default=False)
+def list_hotwords(add, remove, clear):
     """Lists all hotwords of your persona."""
+    if clear:
+        personas.persona.hotwords = []
+        click.echo(_render_emoji("🗑  ") + _render_colored([("Cleared all hotwords.", "red")]))
     for hotword in add:
         personas.persona.hotwords.append(hotword)
         click.echo(_render_emoji("➕ ") + _render_colored([("Added hotword:", "green"), (hotword, "magenta")]))
