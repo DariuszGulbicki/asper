@@ -214,7 +214,7 @@ asper run
 > To install the library, run the following command: \
 > `pip install git+https://github.com/mmabrouk/chatgpt-wrapper` \
 > Then run the following command to log in to chatgpt: \
-> `chatgpt install` \
+> `chatgpt install`
 
 ### Contributing
 
